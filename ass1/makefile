@@ -1,5 +1,6 @@
 # REPLACE STUDENT NAMES WITH YOURS
 STUDENT_NAMES := student_name1_student_name2
+DOCS := $(shell find docs/*.pdf)
 DELIVERABLE := $(STUDENT_NAMES).tar.gz
 PYTHON_FILES := simpson_rule.py riemannsom.py \
 				efficiency_simp_riemann_trap.py monte_carlo.py \
@@ -12,5 +13,5 @@ check: $(PYTHON_FILES)
 	pyflakes $^
 	touch $(@)
 
-$(DELIVERABLE): $(PYTHON_FILES) check
-	tar -czf $@ $(PYTHON_FILES)
+$(DELIVERABLE): $(PYTHON_FILES) $(DOCS) check
+	tar -czf $@ $(PYTHON_FILES) $(DOCS)

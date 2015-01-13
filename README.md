@@ -9,6 +9,7 @@ git clone git@github.com:icyrizard/Numerical-Recipes-UvA.git
 
 Don't forget to:
 + Install pep8 and pyflakes, **VERY IMPORTANT!**
++ Add your report in the docs folder of the assigment, and call it report.pdf.
 + Put your names in the $(STUDENT_NAMES) variable in the makefile.
 + Put your names in all the python files
 + Run `make` frequently to prevent a lot of work later on.
@@ -33,6 +34,11 @@ the general idea of the framework the same.
 Hand in the tar.gz that is created when you run make. Upload this file in
 blackboard, **JUST ONES PER STUDENT**. Make only creates the archive if you
 removed all of your bugs and style issues.
+
+## Report
+In ass1/docs/ you should put your report called: `report.pdf`. This will be
+included in the archive when you run make. You can do whatever you like in the
+docs folder, just name your report of the assignment `report.pdf`.
 
 
 ## Problems
