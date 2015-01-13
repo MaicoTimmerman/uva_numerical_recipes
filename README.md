@@ -1,7 +1,7 @@
 # Assignment Numerical Integrals
 Prerequisites:
 ~~~
-sudo apt-get install pep8 pyflakes
+sudo apt-get install pep8 pyflakes make
 ~~~
 
 Don't forget to:
