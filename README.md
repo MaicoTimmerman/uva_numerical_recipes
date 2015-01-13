@@ -26,3 +26,13 @@ the general idea of the framework the same.
     make. But before it does, the code is checked for syntax using pep8 and
     unused or undefined variables.
 
+## Hand in your code
+Hand in the tar.gz that is created when you run make. Upload this file in
+blackboard, **JUST ONES PER STUDENT**. Make only creates the archive if you
+removed all of your bugs and style issues.
+
+
+## Problems
++ If you can not install pep8 or pyflakes or make, you should be ashamed.
++ For any other problems you can contact any of the student assistents.
+    + Richard Torenvliet - rich.riz@gmail.com
