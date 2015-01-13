@@ -3,6 +3,9 @@ Prerequisites:
 ~~~
 sudo apt-get install pep8 pyflakes make
 ~~~
+~~~
+git clone git@github.com:icyrizard/Numerical-Recipes-UvA.git
+~~~
 
 Don't forget to:
 + Install pep8 and pyflakes, **VERY IMPORTANT!**
