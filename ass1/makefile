@@ -1,6 +1,6 @@
 # REPLACE STUDENT NAMES WITH YOURS
 STUDENT_NAMES := student_name1_student_name2
-DOCS := $(shell find docs/*.pdf)
+DOCS := $(shell ls docs/report.pdf)
 DELIVERABLE := $(STUDENT_NAMES).tar.gz
 PYTHON_FILES := simpson_rule.py riemannsom.py \
 				efficiency_simp_riemann_trap.py monte_carlo.py \
