@@ -11,5 +11,5 @@ def trapezoidal_rule(f, a, b, n):
 
 if __name__ == "__main__":
     # start here
-    trapezoidal_rul(math.sin, 0, math.pi, 100)
+    trapezoidal_rule(math.sin, 0, math.pi, 100)
     # continue implementation
