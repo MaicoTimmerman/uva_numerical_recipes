@@ -130,6 +130,17 @@ def montecarlo(f, a, b, n):
     return area
 
 
+def test_error_rieman(func, err_val, method):
+
+    # Start with 1 bar and keep increasing until the precision is met
+    bars = 1
+
+    while(True):
+        if (abs(riemann_sum(func, 0, 1, 100, method) - math.pi) < err_val):
+            print('working')
+            return bars
+
+
 if __name__ == "__main__":
     function1 = lambda x: 4 / float((pow(x, 2) + 1))
     function2 = lambda x: math.sin(x)
@@ -153,3 +164,24 @@ if __name__ == "__main__":
     print('-----Monte Carlo-----')
     print(montecarlo(function1, 0, 1, 100000))
     print(montecarlo(function2, 0, math.pi, 100000))
+
+    print('-----Test Efficiency------')
+    print('0.1')
+    print('    ' + str(test_error_rieman(function1, 0.1, method='left')))
+    print('    ' + str(test_error_rieman(function1, 0.1, method='center')))
+    print('    ' + str(test_error_rieman(function1, 0.1, method='right')))
+
+    print('0.01')
+    print('    ' + str(test_error_rieman(function1, 0.01, method='left')))
+    print('    ' + str(test_error_rieman(function1, 0.01, method='center')))
+    print('    ' + str(test_error_rieman(function1, 0.01, method='right')))
+
+    print('0.001')
+    print('    ' + str(test_error_rieman(function1, 0.001, method='left')))
+    print('    ' + str(test_error_rieman(function1, 0.001, method='center')))
+    print('    ' + str(test_error_rieman(function1, 0.001, method='right')))
+
+    print('0.0001')
+    print('    ' + str(test_error_rieman(function1, 0.0001, method='left')))
+    print('    ' + str(test_error_rieman(function1, 0.0001, method='center')))
+    print('    ' + str(test_error_rieman(function1, 0.0001, method='right')))
