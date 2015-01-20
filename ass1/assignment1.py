@@ -36,7 +36,7 @@ def riemann_sum(f, a, b, n, method):
 
 def trapezoid_rule(f, a, b, n):
     """
-    Trapezoid rule apporximation of the surface underneath a curve.
+    Trapezoid rule approximation of the surface underneath a curve.
     Function f defines the curve, a is the left bound, b is the right bound.
     n is the amount of steps to take within the interval a, b.
     """
@@ -130,20 +130,51 @@ def montecarlo(f, a, b, n):
     return area
 
 
-def test_error_rieman(func, precision, method):
+def test_error_riemann(func, val, interval, precision, method):
+    """
+    Test the needed number of bars voor a specified precision. With precision
+    being equal to the total number of digits after the decimal point. The
+    method defines if the left, right or center riemann sum is taken. Val is
+    the exact value the function should take
+    """
 
     # Start with 1 bar and keep increasing until the precision is met
-    bars = 10000
+    bars = 1
     decimals = 1
 
     while(True):
         if (decimals == precision + 1):
             return
-        if (round(riemann_sum(func, 0, 1, bars, method), decimals) ==
-                round(math.pi, decimals)):
+        if (round(riemann_sum(func, 0, interval, bars, method), decimals) ==
+                round(val, decimals)):
             print('n: %d for %d decimals' % (bars, decimals))
             decimals += 1
         bars += 1
+
+
+def test_error_func(method, func, interval, val, precision):
+    """
+    The integration method precision is tested on the func. The precision is
+    equal to the number of digits after the decimal point. The val is the exact
+    value the method should take.
+    """
+
+    # Start with 1 and keep increasing until the precision is met
+    n = 30000
+    decimals = 7
+
+    while(True):
+        if (decimals == precision + 1):
+            print('stop')
+            return
+        if (round(method(func, 0, interval, n), decimals) ==
+                round(val, decimals)):
+            print('n: %d for %d decimals' % (n, decimals))
+            decimals += 1
+        n += 1
+        if ((n % 1000) == 0):
+            print('n: %d' % n)
+
 
 if __name__ == "__main__":
     function1 = lambda x: 4 / float((pow(x, 2) + 1))
@@ -170,10 +201,24 @@ if __name__ == "__main__":
     print(montecarlo(function2, 0, math.pi, 100000))
 
     print('-----Test Efficiency------')
-    print('Error val: 0.1')
-    print('left:')
-    test_error_rieman(function1, 4, method='left')
-    print('center:')
-    test_error_rieman(function1, 4, method='center')
-    print('right:')
-    test_error_rieman(function1, 4, method='right')
+    # print('Riemann_sum (4/pow(x, 2) + 1)')
+    # print('left:')
+    # test_error_riemann(function1, math.pi, interval, 4, method='left')
+    # print('center:')
+    # test_error_riemann(function1, math.pi, interval, 4, method='center')
+    # print('right:')
+    # test_error_riemann(function1, math.pi, interval, 4, method='right')
+
+    # print('Riemann sum sin')
+    # print('left:')
+    # test_error_riemann(math.sin, 2, math.pi, 7, method='left')
+    # print('center:')
+    # test_error_riemann(math.sin, 2, math.pi, 7, method='center')
+    # print('right:')
+    # test_error_riemann(math.sin, 2, math.pi, 7, method='right')
+    print('montecarlo')
+    test_error_func(montecarlo, math.sin, math.pi, 2, 7)
+    # print('simpson_rule')
+    # test_error_func(simpson_rule, math.sin, math.pi, 2, 7)
+    # print('trapezoid_rule')
+    # test_error_func(trapezoid_rule, math.sin, math.pi, 2, 7)
