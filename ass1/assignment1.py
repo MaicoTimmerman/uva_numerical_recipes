@@ -130,16 +130,20 @@ def montecarlo(f, a, b, n):
     return area
 
 
-def test_error_rieman(func, err_val, method):
+def test_error_rieman(func, precision, method):
 
     # Start with 1 bar and keep increasing until the precision is met
-    bars = 1
+    bars = 10000
+    decimals = 1
 
     while(True):
-        if (abs(riemann_sum(func, 0, 1, 100, method) - math.pi) < err_val):
-            bars += 1
-            return bars
-
+        if (decimals == precision + 1):
+            return
+        if (round(riemann_sum(func, 0, 1, bars, method), decimals) ==
+                round(math.pi, decimals)):
+            print('n: %d for %d decimals' % (bars, decimals))
+            decimals += 1
+        bars += 1
 
 if __name__ == "__main__":
     function1 = lambda x: 4 / float((pow(x, 2) + 1))
@@ -166,22 +170,10 @@ if __name__ == "__main__":
     print(montecarlo(function2, 0, math.pi, 100000))
 
     print('-----Test Efficiency------')
-    print('0.1')
-    print('    ' + str(test_error_rieman(function1, 0.1, method='left')))
-    print('    ' + str(test_error_rieman(function1, 0.1, method='center')))
-    print('    ' + str(test_error_rieman(function1, 0.1, method='right')))
-
-    print('0.01')
-    print('    ' + str(test_error_rieman(function1, 0.01, method='left')))
-    print('    ' + str(test_error_rieman(function1, 0.01, method='center')))
-    print('    ' + str(test_error_rieman(function1, 0.01, method='right')))
-
-    print('0.001')
-    print('    ' + str(test_error_rieman(function1, 0.001, method='left')))
-    print('    ' + str(test_error_rieman(function1, 0.001, method='center')))
-    print('    ' + str(test_error_rieman(function1, 0.001, method='right')))
-
-    print('0.0001')
-    print('    ' + str(test_error_rieman(function1, 0.0001, method='left')))
-    print('    ' + str(test_error_rieman(function1, 0.0001, method='center')))
-    print('    ' + str(test_error_rieman(function1, 0.0001, method='right')))
+    print('Error val: 0.1')
+    print('left:')
+    test_error_rieman(function1, 4, method='left')
+    print('center:')
+    test_error_rieman(function1, 4, method='center')
+    print('right:')
+    test_error_rieman(function1, 4, method='right')
