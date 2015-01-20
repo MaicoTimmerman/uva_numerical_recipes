@@ -4,7 +4,8 @@ DOCS := $(shell ls docs/report.pdf)
 DELIVERABLE := $(STUDENT_NAMES).tar.gz
 PYTHON_FILES := simpson_rule.py riemannsom.py \
 				efficiency_simp_riemann_trap.py monte_carlo.py \
-				efficiency_monte_carlo.py
+				efficiency_monte_carlo.py \
+				common.py
 
 all: $(DELIVERABLE)
 
