@@ -137,7 +137,7 @@ def test_error_rieman(func, err_val, method):
 
     while(True):
         if (abs(riemann_sum(func, 0, 1, 100, method) - math.pi) < err_val):
-            print('working')
+            bars += 1
             return bars
 
 
