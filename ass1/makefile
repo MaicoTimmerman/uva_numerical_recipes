@@ -1,10 +1,8 @@
 # REPLACE STUDENT NAMES WITH YOURS
-STUDENT_NAMES := student_name1_student_name2
+STUDENT_NAMES := maico_timmerman_robin_klusman
 DOCS := $(shell ls docs/report.pdf)
 DELIVERABLE := $(STUDENT_NAMES).tar.gz
-PYTHON_FILES := simpson_rule.py riemannsom.py \
-				efficiency_simp_riemann_trap.py monte_carlo.py \
-				efficiency_monte_carlo.py
+PYTHON_FILES := assignment1.py
 
 all: $(DELIVERABLE)
 
