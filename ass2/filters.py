@@ -1,3 +1,5 @@
+# Vak: Numerical Recipes
+# Auteurs: <Naam> <Collegakaart>, <Naam> <Collekaart>
 import numpy as np
 
 
