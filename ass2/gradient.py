@@ -2,6 +2,7 @@
 # Auteurs: <Naam> <Collegakaart>, <Naam> <Collekaart>
 try:
     import matplotlib.pyplot as plt
+    assert plt
 except ImportError:
     print "Warning: could not import matplotlib.pyplot"
 try:
