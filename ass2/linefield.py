@@ -39,10 +39,12 @@ def show_images(images, cm=plt.cm.gray, axis='off'):
 
 def slope_field():
     for i in range(10):
-        a = i * 2/9
+        a = i * 2/9.
         for j in range(10):
-            b = j * 2/9
+            b = j * 2/9.
             get_line(a, b, 0.1)
+
+    plt.show()
 
 
 def random_field():
@@ -61,9 +63,15 @@ def get_line(t, y, length):
     db = math.sqrt((s**2*c**2)/(s**2+1))
     da = math.sqrt(c**2-db**2)
 
-    plt.plot(a - da, b - db), (a + da, b + db)
+    a1 = a - da
+    b1 = b - db
+    a2 = a + da
+    b2 = b + db
+
+    plt.plot(a1, b1), (a2, b2)
+    print('Plotted line at {}, {}'.format(a, b))
 
 
 if __name__ == "__main__":
     slope_field()
-    random_field()
+    #random_field()
