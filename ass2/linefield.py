@@ -66,3 +66,4 @@ def get_line(t, y, length):
 
 if __name__ == "__main__":
     slope_field()
+    random_field()
