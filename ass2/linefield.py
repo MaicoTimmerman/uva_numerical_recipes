@@ -1,19 +1,19 @@
 # Vak: Numerical Recipes
-# Auteurs: <Naam> <Collegakaart>, <Naam> <Collekaart>
+# Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
 try:
     import matplotlib.pyplot as plt
 except ImportError:
-    print "Warning: could not import matplotlib.pyplot"
+    print("Warning: could not import matplotlib.pyplot")
 try:
     import numpy as np
     assert np
 except ImportError:
-    print "Warning: could not import numpy"
+    print("Warning: could not import numpy")
 try:
     from scipy import ndimage, misc
     assert ndimage, misc
 except ImportError:
-    print "Warning: could not import scipy.ndimage"
+    print("Warning: could not import scipy.ndimage")
 
 
 def show_images(images, cm=plt.cm.gray, axis='off'):
