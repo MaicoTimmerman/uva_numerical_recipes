@@ -1,5 +1,5 @@
 # Vak: Numerical Recipes
-# Auteurs: <Naam> <Collegakaart>, <Naam> <Collekaart>
+# Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
 try:
     import matplotlib.pyplot as plt
     assert plt
@@ -43,6 +43,8 @@ def show_images(images, cm=plt.cm.gray, axis='off'):
         plt.axis(axis)
         plt.imshow(img, cmap=cm)
 
+    fig, ax = plt.subplots()
+
     plt.show()
 
 
@@ -55,14 +57,19 @@ def prewitt_assignment(img):
     x, y = np.shape(img)
 
     # Apply Filter
-    gradient_x = convolve_image(img, filter_x)[::-1]
-    gradient_y = convolve_image(img, filter_y)[::-1]
+    # gradient_x = convolve_image(img, filter_x)[::-1]
+    # gradient_y = convolve_image(img, filter_y)[::-1]
+    filtered_x = convolve_image(img, filter_x)
+    filtered_y = convolve_image(img, filter_y)
+
+    dy, dx = np.gradient(filtered_x)
+
+    # quiver(x, y, dx, dy, filtered_x)
 
     # quiver ....
-    # Draw vectors
 
     # Show result
-    show_images([img, gradient_x, gradient_y])
+    show_images([img, filtered_x, filtered_y])
 
 
 def laplace_assignment(img):
@@ -83,7 +90,7 @@ def sobel_assignment(img):
 if __name__ == "__main__":
     # START HERE
     # img = misc.lena()
-    img = ndimage.imread('img/lena.png')
+    img = ndimage.imread('img/lena.png', flatten=True)
 
     prewitt_assignment(img)
 

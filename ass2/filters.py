@@ -1,5 +1,5 @@
 # Vak: Numerical Recipes
-# Auteurs: <Naam> <Collegakaart>, <Naam> <Collekaart>
+# Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
 import numpy as np
 
 
