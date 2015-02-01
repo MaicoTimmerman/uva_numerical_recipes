@@ -60,7 +60,7 @@ def get_line(t, y, length):
     a = t              # t Position
     b = y              # y Position
 
-    dy = math.sqrt((s**2*c**2)/(s**2+1))
+    dy = c * math.sin(math.atan(s))
     dx = math.sqrt(c**2-dy**2)
 
     x1 = a - dx
@@ -68,7 +68,7 @@ def get_line(t, y, length):
     x2 = a + dx
     y2 = b + dy
 
-    print('da {}, db {}'.format(dx, dy))
+    print('dx {}, dy {}'.format(dx, dy))
 
     plt.plot((x1, y1), (x2, y2))
     print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
