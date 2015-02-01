@@ -35,8 +35,8 @@ def euler(phi, t0, y0, t1, n):
         yvals.append(y)
         tvals.append(t)
 
-    plt.plot(tvals, yvals, 'r-', linewidth=1)
     linefield.random_field(phi)
+    plt.plot(tvals, yvals, 'r-', linewidth=2)
 
 
 if __name__ == "__main__":
