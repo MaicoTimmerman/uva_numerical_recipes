@@ -60,8 +60,8 @@ def get_line(t, y, length):
     a = t              # t Position
     b = y              # y Position
 
-    dy = c * math.sin(math.atan(s))
-    dx = math.sqrt(c**2-dy**2)
+    dy = c * math.sin(math.atan(s))  # Goniometrics
+    dx = math.sqrt(c**2-dy**2)       # Pythagoras
 
     x1 = a - dx
     y1 = b - dy
@@ -75,5 +75,8 @@ def get_line(t, y, length):
 
 
 if __name__ == "__main__":
-    slope_field()
+    get_line(1, 1, 1)
+    plt.plot((0.8, 0.8), (1.2, 1.2))
+    plt.show()
+    #slope_field()
     #random_field()
