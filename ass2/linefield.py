@@ -14,50 +14,45 @@ import math
 import random
 
 
-def show_images(images, cm=plt.cm.gray, axis='off'):
-    """
-    Shows an array of images in a figure-sublot
-
-    Args:
-        img(list) - list of images
-
-    Optional:
-        cm(plt.cm) - maptlotlib colormap
-        axis(str) - argument to give plt
-    """
-
-    number_images = len(images)
-    fig = plt.figure()
-
-    for i, img in enumerate(images):
-        fig.add_subplot(1, number_images, i)
-        plt.axis(axis)
-        plt.imshow(img, cmap=cm)
-
-    plt.show()
-
-
 def slope_field():
+    """
+    Creates a slope field with 100 t and y values equally
+    spaced from 0,0 to 2,2
+    """
+
     for i in range(10):
         a = i * 2/9.
         for j in range(10):
             b = j * 2/9.
             get_line(a, b, 0.1)
 
+    print('Slope field plot.')
+    print('Close this plot to move on to the random plot.')
     plt.show()
 
 
 def random_field():
+    """
+    Creates a slope field with 2000 random t and y values
+    """
+
     for i in range(2000):
         a = 2 * random.random()
         b = 2 * random.random()
         get_line(a, b, 0.1)
 
+    plt.show()
+
 
 def get_line(t, y, length):
+    """
+    Makes a line using the slope gotten from the function and the
+    line-length that we give to it.
+    """
+
     s = 1 - 2 * t * y  # Slope
-    c = length / 2     # Line Length
-    a = t              # t Position
+    c = length / 2     # Half Line Length
+    a = t              # t (x) Position
     b = y              # y Position
 
     dy = c * math.sin(math.atan(s))  # Goniometrics
@@ -70,12 +65,9 @@ def get_line(t, y, length):
 
     plt.plot([x1, x2], [y1, y2], 'b-', linewidth=1)
 
-    print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
+    # print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
 
 
 if __name__ == "__main__":
-    # get_line(1, 1, 1)
-    # plt.plot([1, 2], [1, 2], 'g-', label='line 1', linewidth=2)
-    # plt.show()
     slope_field()
-    #random_field()
+    random_field()
