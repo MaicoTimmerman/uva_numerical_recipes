@@ -2,10 +2,10 @@
 # Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
 try:
     import matplotlib.pyplot as plt
-    assert plt
     import numpy as np
-    assert np
     from scipy import ndimage, misc
+    assert np
+    assert plt
     assert ndimage, misc
 except ImportError:
     print("Warning: could not import.")
@@ -14,7 +14,7 @@ import math
 import random
 
 
-def slope_field(phi):
+def plot_slope_field(phi, fig=plt):
     """
     Creates a slope field with 100 t and y values equally
     spaced from 0,0 to 2,2
@@ -24,18 +24,46 @@ def slope_field(phi):
         a = i * 2/9.
         for j in range(10):
             b = j * 2/9.
-            get_line(phi, a, b, 0.1)
+            x, y = get_line(phi, a, b, 0.1)
+            plt.plot((x[0], x[1]), (y[0], y[1]),
+                     'b-', linewidth=1)
+    # Display the slope
+    fig.show()
 
 
-def random_field(phi):
+def plot_random_field(phi, fig=plt, t=None, y=None):
     """
     Creates a slope field with 2000 random t and y values
     """
 
+    # Determine the domain (x values) of the function.
+    if not t:
+        x_min = 0
+        x_max = 2
+    else:
+        x_min = min(t)
+        x_max = max(t)
+
+    # Determine the range (y values) of the function.
+    if not t:
+        y_min = 0
+        y_max = 2
+    else:
+        y_min = min(t)
+        y_max = max(t)
+
+    if t and y:
+        print("''''")
+        print('min: ' + str(min(t)))
+        print('max: ' + str(max(t)))
+        print('min: ' + str(min(y)))
+        print('max: ' + str(max(y)))
+
     for i in range(2000):
-        a = 2 * random.random()
-        b = 2 * random.random()
-        get_line(phi, a, b, 0.1)
+        x = (random.random() * (x_max - x_min)) + x_min
+        y = (random.random() * (y_max - y_min)) + y_min
+        x, y = get_line(phi, x, y, 0.1)
+        fig.plot((x[0], x[1]), (y[0], y[1]), 'b-', linewidth=1)
 
 
 def get_line(phi, t, y, length):
@@ -57,20 +85,15 @@ def get_line(phi, t, y, length):
     x2 = a + dx
     y2 = b + dy
 
-    plt.plot([x1, x2], [y1, y2], 'b-', linewidth=1)
-
-    # print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
+    return ((x1, x2), (y1, y2))
 
 
 if __name__ == "__main__":
     phi = lambda t, y: 1 - 2 * t * y
-    slope_field(phi)
 
     print('Slope field plot.')
-    print('Close this plot to move on to the random plot.')
-    plt.show()
-
-    random_field(phi)
+    plot_slope_field(phi)
 
     print('Random field plot.')
+    plot_random_field(phi)
     plt.show()
