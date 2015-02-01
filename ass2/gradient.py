@@ -43,8 +43,6 @@ def show_images(images, cm=plt.cm.gray, axis='off'):
         plt.axis(axis)
         plt.imshow(img, cmap=cm)
 
-    fig, ax = plt.subplots()
-
     plt.show()
 
 
@@ -54,22 +52,28 @@ def prewitt_assignment(img):
     """
     # Get filter:
     filter_x, filter_y = filters.prewitt()
+
     x, y = np.shape(img)
 
     # Apply Filter
-    # gradient_x = convolve_image(img, filter_x)[::-1]
-    # gradient_y = convolve_image(img, filter_y)[::-1]
     filtered_x = convolve_image(img, filter_x)
-    filtered_y = convolve_image(img, filter_y)
+    # filtered_y = convolve_image(img, filter_y)
 
-    dy, dx = np.gradient(filtered_x)
+    # Create a grid to display gradient vectors
+    grid_x, grid_y = np.mgrid[0:x, 0:y]
+    skip = (slice(None, None, 5), slice(None, None, 5))
 
-    # quiver(x, y, dx, dy, filtered_x)
+    # Display the x filtered gradient
+    dx, dy = np.gradient(filtered_x)
+    plt.quiver(grid_y[skip], grid_x[skip], dy[skip], dx[skip])
 
-    # quiver ....
+    plt.imshow(img, cmap=plt.cm.gray)
+
+    plt.show()
 
     # Show result
-    show_images([img, filtered_x, filtered_y])
+
+    # show_images([filtered_x, filtered_y])
 
 
 def laplace_assignment(img):
