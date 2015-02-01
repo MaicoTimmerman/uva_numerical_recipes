@@ -58,6 +58,9 @@ def plot_random_field(phi, fig=plt, t=None, y=None):
         x, y = get_line(phi, x, y, 0.1)
         fig.plot((x[0], x[1]), (y[0], y[1]), 'b-', linewidth=1)
 
+    fig.xlim([x_min, x_max])
+    fig.ylim([y_min, y_max])
+
 
 def get_line(phi, t, y, length):
     """

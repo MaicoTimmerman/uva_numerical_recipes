@@ -51,6 +51,7 @@ if __name__ == "__main__":
     linefield.plot_random_field(f1, t=t0+t1, y=y0+y1)
     plt.plot(t0, y0, 'r-', linewidth=3)
     plt.plot(t1, y1, 'm-', linewidth=3)
+    plt.tight_layout()
     plt.show()
 
     # Euler for y-(1/3)*y*y)', with y(0) = .25
@@ -63,4 +64,5 @@ if __name__ == "__main__":
     linefield.plot_random_field(f2, t=t2+t3, y=y2+y3)
     plt.plot(t2, y2, 'r-', linewidth=3)
     plt.plot(t3, y3, 'm-', linewidth=3)
+    plt.tight_layout()
     plt.show()
