@@ -3,18 +3,12 @@
 try:
     import matplotlib.pyplot as plt
     assert plt
-except ImportError:
-    print("Warning: could not import matplotlib.pyplot")
-try:
     import numpy as np
     assert np
-except ImportError:
-    print("Warning: could not import numpy")
-try:
     from scipy import ndimage, misc
     assert ndimage, misc
 except ImportError:
-    print("Warning: could not import scipy.ndimage")
+    print("Warning: could not import")
 
 import filters
 
