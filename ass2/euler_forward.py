@@ -17,17 +17,17 @@ def euler(phi, t0, y0, t1, n, color):
     """
     Get the graph approximation using euler method.
 
+    phi is the function of the GDV dy/dt = phi(t,y)
+    starting value y(t0) = y0
+    timeinterval is [t0, t1]
+    n is the number of steps in the euler method.
+    """
     h = (t1 - t0) / float(n)  # Step width
     t = t0                    # Start t
     y = y0                    # Start y
     tvals = []                # Array of t values
     yvals = []                # Array of y values
-    """
-    h = (t1 - t0) / float(n)
-    t = t0
-    y = y0
-    tvals = []
-    yvals = []
+
     for i in range(n):
         y += h * phi(t, y)
         t += h
