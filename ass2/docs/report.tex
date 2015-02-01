@@ -105,20 +105,46 @@
 \tableofcontents
 \vspace{5mm}
 
+\captionsetup{width=\textwidth/7*5}
+
 % =================================== MAIN TEXT ===================================
 
 \section{Gradients}
 \subsection{Gradient Arrows}
 
 
+
+\begin{center}
+    \includegraphics[width=\textwidth]{gradient}
+    \captionof{figure}{}
+\end{center}
+
 \subsection{Gaussian blur}
 
+
+
+\begin{center}
+    \includegraphics[width=\textwidth]{gauss}
+    \captionof{figure}{}
+\end{center}
 
 \subsection{Laplace operator}
 
 
+
+\begin{center}
+    \includegraphics[width=\textwidth]{laplace}
+    \captionof{figure}{}
+\end{center}
+
 \subsection{Sobel operator}
 
+
+
+\begin{center}
+    \includegraphics[width=\textwidth]{sobel}
+    \captionof{figure}{}
+\end{center}
 
 \clearpage
 \section{Slope Fields}
@@ -143,6 +169,8 @@ the interval $(0,2)$ in both the $t$ and $y$ directions as shown in the image
 below.
 \begin{center}
     \includegraphics[width=\textwidth]{slopefield}
+    \captionof{figure}{Structured slope field for $\varphi(t,y) = 1-2ty$ with a
+        total of 100 slope lines.}
 \end{center}
 
 For the random slope field two random numbers are generated, one for the
@@ -150,6 +178,8 @@ $t$-coordinate and one for the $y$-coordinate. This is repeated a total of 2000
 times to create the field as shown in the image below.
 \begin{center}
     \includegraphics[width=\textwidth]{randomfield}
+    \captionof{figure}{Random slope field for $\varphi(t,y) = 1-2ty$ with a
+        total of 2000 slope lines.}
 \end{center}
 
 \subsection{Euler approximation}
@@ -164,16 +194,25 @@ step. After calculating the new $y$ value the new $t$ value is produced by
 $t_{k+1} = t_k + h$.
 
 When repeating this process 2000 times on the interval $(0,2)$ for $\varphi(t,
-y) = 1-2ty$ with begin values $y(0) = 1.5$ (in red) and $y(0) = 0.25$ (in
-purple) it creates the function approximation shown in the figure below.
+y) = 1-2ty$ with begin values $y(0) = 1.5$ and $y(0) = 0.25$ it creates the
+function approximation shown in the figure below.
 
 \begin{center}
     \includegraphics[width=\textwidth]{euler1}
+    \captionof{figure}{Shows a random slope field of $\varphi(t,y)=1-2ty$ with
+        the corresponding Euler approximation of the graph. Using $y(0) = 1.5$
+        in red and $y(0) = 0.25$ in purple.}
 \end{center}
-\captionof{figure}{Shows a random slope field with the corresponding Euler
-approximation of the graph. Using $y(0) = 1.5$ in red and $y(0) = 0.25$ in
-purple.}
 
+In the case of $\varphi(t,y)=y(1-1/3y)$ on the interval $(-1, 1)$ with begin
+values $y(-1)=0.25$ in red and $y(-1) = 2.5$ in purple.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{euler2}
+    \captionof{figure}{Shows a random slope field of $\varphi(t,y)=y(1-1/3y)$ with
+        the corresponding Euler approximation of the graph. Using $y(-1) = 0.25$
+        in red and $y(-1) = 2.5$ in purple.}
+\end{center}
 
 
 % =================================== REFERENCES ===================================
