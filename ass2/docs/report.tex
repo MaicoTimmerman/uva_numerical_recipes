@@ -116,8 +116,7 @@ The gradient is defined as:
 $$\nabla f(x,y)=\!\!\left(\begin{array}{c} f_x(x,y) \\
 f_y(x,y)\end{array}\right)$$
 The gradient is an indication of the color change and can be used to indicate
-edges. For gradient determination, the Prewitt filter is used. In the following
-image the result of the prewitt filter, with vectors for the gradient are shown.
+edges. For gradient determination, the Prewitt filter is used.
 
 Prewitt filtering is defined as following:
 
@@ -131,36 +130,60 @@ The Prewitt total image can then be displayed as:
 
 $$ G = \sqrt{G_x^2 + G_y^2} $$
 
+In the following image the result of the Prewitt filter, with vectors for the
+gradient are shown.  Only every third gradient vector is shown, because the
+image would be too full to distinguish features.
+
 \begin{center}
     \includegraphics[width=\textwidth]{gradient}
-    \captionof{figure}{}
+    \captionof{figure}{Prewitt filtered image, with gradient vectors}
 \end{center}
 
 \subsection{Gaussian blur}
 
-
+For the Gaussian blur the images' color values are averaged with its neighbour
+pixels. By subtracting the blurred image from the original, large transitions
+are highlighted.
 
 \begin{center}
     \includegraphics[width=\textwidth]{gauss}
-    \captionof{figure}{}
+    \captionof{figure}{Original image (left), gaussian blurred (center) and
+    inverted (right) images.}
 \end{center}
 
 \subsection{Laplace operator}
 
+For the Laplacian transformation the following matrix is used:
 
+$$\left(\begin{array}{ccc} 0 & 1 & 0 \\ 1 & -4 & 1 \\ 0 & 1 & 0
+\end{array}\right)$$
+
+Convolving the original image with the kernel causes the image to turn gray,
+highlighting its edge features.
 
 \begin{center}
     \includegraphics[width=\textwidth]{laplace}
-    \captionof{figure}{}
+    \captionof{figure}{Laplacian convolved image (left) and original image
+    (right)}
 \end{center}
 
 \subsection{Sobel operator}
 
+The sobel operation approximates the gradient by calculating the derivative in
+$x$ and $y$ directions. This can be done by convolving the image with the
+following two kernels.
 
+$$ S_x=\left(\begin{array}{ccc} 1 & 0 & -1 \\ 2 & 0 & -2 \\ 1 & 0 & -1
+\end{array}\right) \quad\mathrm{en}\quad S_y=\left(\begin{array}{ccc} 1 & 2 & 1
+\\ 0 & 0 & 0 \\ -1 & -2 & -1 \end{array}\right). $$
+
+The gradient can then be calculated using the following formula:
+
+$$ G = \sqrt{(S_x)^2 + (S_y)^2} $$
 
 \begin{center}
     \includegraphics[width=\textwidth]{sobel}
-    \captionof{figure}{}
+    \captionof{figure}{$S_x$ (left), G (center) and $S_y$ (right)}
 \end{center}
 
 \clearpage
