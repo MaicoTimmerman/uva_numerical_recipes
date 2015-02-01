@@ -98,7 +98,7 @@
 
 \vspace{2cm}
 \begin{center}
-    \includegraphics[width=(\textwidth/5*3)]{slopefield}
+    \includegraphics[width=(\textwidth/6*5)]{slopefield}
 \end{center}
 \clearpage
 
@@ -107,7 +107,44 @@
 
 % =================================== MAIN TEXT ===================================
 
+\section{Gradients}
+\subsection{Gradient Arrows}
 
+
+\subsection{Gaussian blur}
+
+
+\subsection{Laplace operator}
+
+
+\subsection{Sobel operator}
+
+
+\section{Slope Fields}
+\subsection{Slope and random fields}
+
+In this exercise first a slope field of equally spaced slope lines is created,
+after which a slope field of 2000 randomly positioned slope lines is created.
+For both of these slope fields, the first problem was to make lines of equal
+length at an angle corresponding to the slope of the function in the point
+$(a,b)$ with $(a,b)$ at its center. To create these lines the $\Delta t$ and
+$\Delta y$ from $(a,b)$ has to be calculated. We can then draw a line from
+$(a-\Delta t, b-\Delta y)$ to $(a+\Delta t, b+\Delta y)$ to get our line.
+
+Calculating $\Delta t$ and $\Delta y$ required a combination of goniometric
+formulas to find $\Delta y$ and the Pythagoras theorem to find $\Delta t$.  We
+used $\Delta y = c*\sin(\tan^{-1}(s))$ where $c$ is half the total
+desired line length and $s$ is the slope. Then $\Delta t$ is found by simply
+$\Delta t= \sqrt{c^2-\Delta y^2}$
+
+In case of the structured slope field we plotted a total of 100 slope lines on
+the interval $(0,2)$ in both the $t$ and $y$ directions.
+
+For the random slope field two random numbers are generated, one for the
+$t$-coordinate and one for the $y$-coordinate. This is repeated a total of 2000
+times to create the field.
+
+\subsection{Euler approximation}
 
 
 % =================================== REFERENCES ===================================
