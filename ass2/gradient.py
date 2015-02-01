@@ -86,7 +86,11 @@ def laplace_assignment(img):
 
 
 def gauss_assignment(img):
-    """"""
+    """
+    """
+    gauss_img = ndimage.gaussian_filter(img, 4)
+    inverted_gaus_img = img - gauss_img
+    show_images([inverted_gaus_img, img, gauss_img])
     pass
 
 
@@ -101,5 +105,6 @@ if __name__ == "__main__":
     img = ndimage.imread('img/lena.png', flatten=True)
 
     prewitt_assignment(img)
+    gauss_assignment(img)
 
     # call other sub-assignments
