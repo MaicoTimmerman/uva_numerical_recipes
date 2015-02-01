@@ -2,10 +2,10 @@
 # Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
 try:
     import matplotlib.pyplot as plt
-    assert plt
     import numpy as np
-    assert np
     from scipy import ndimage, misc
+    assert plt
+    assert np
     assert ndimage, misc
 except ImportError:
     print("""
@@ -46,7 +46,7 @@ def show_images(images, cm=plt.cm.gray, axis='off', title=None):
 def prewitt_assignment(img):
     """
     Calculate the prewitt filtering of the img, then display vectors of the
-    gradient on the img.
+    gradient on the img. Skip every third vector.
     """
     # Get filter:
     filter_x, filter_y = filters.prewitt()
@@ -65,7 +65,8 @@ def prewitt_assignment(img):
     # Display the x filtered gradient
     gradient = np.gradient(G)
 
-    # Display the quiver on the image
+    # Display the quiver on the image. Skip every first and second vector for
+    # visibility purposes.
     skip = (slice(None, None, 3), slice(None, None, 3))
     plt.quiver(y[skip], x[skip],
                gradient[1][skip], gradient[0][skip],

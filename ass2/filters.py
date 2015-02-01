@@ -1,6 +1,10 @@
 # Vak: Numerical Recipes
 # Auteurs: Robin Klusman 10675671, Maico Timmerman 10542590
-import numpy as np
+try:
+    import numpy as np
+    assert np
+except ImportError:
+    print('Could not import numpy')
 
 
 def prewitt():
@@ -23,5 +27,3 @@ def sobel():
     Sy = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])
 
     return Sx, Sy
-
-
