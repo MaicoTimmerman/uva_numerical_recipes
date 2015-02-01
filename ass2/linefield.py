@@ -60,16 +60,18 @@ def get_line(t, y, length):
     a = t              # t Position
     b = y              # y Position
 
-    db = math.sqrt((s**2*c**2)/(s**2+1))
-    da = math.sqrt(c**2-db**2)
+    dy = math.sqrt((s**2*c**2)/(s**2+1))
+    dx = math.sqrt(c**2-dy**2)
 
-    a1 = a - da
-    b1 = b - db
-    a2 = a + da
-    b2 = b + db
+    x1 = a - dx
+    y1 = b - dy
+    x2 = a + dx
+    y2 = b + dy
 
-    plt.plot(a1, b1), (a2, b2)
-    print('Plotted line at {}, {}'.format(a, b))
+    print('da {}, db {}'.format(dx, dy))
+
+    plt.plot((x1, y1), (x2, y2))
+    print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
 
 
 if __name__ == "__main__":
