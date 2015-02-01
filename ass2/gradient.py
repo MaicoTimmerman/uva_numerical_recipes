@@ -8,7 +8,10 @@ try:
     from scipy import ndimage, misc
     assert ndimage, misc
 except ImportError:
-    print("Warning: could not import")
+    print("""
+          Warning: could not import matplotlib:pyplot,
+          numpy or scipy:ndimage/misc
+          """)
 
 import filters
 
@@ -18,7 +21,7 @@ def convolve_image(img, filter_kernel):
     return ndimage.convolve(img, filter_kernel, cval=0.0)
 
 
-def show_images(images, cm=plt.cm.gray, axis='off'):
+def show_images(images, cm=plt.cm.gray, axis='off', title=None):
     """
     Shows an array of images in a figure-sublot
 
@@ -30,7 +33,7 @@ def show_images(images, cm=plt.cm.gray, axis='off'):
         axis(str) - argument to give plt
     """
     number_images = len(images)
-    fig = plt.figure()
+    fig = plt.figure(title)
 
     for i, img in enumerate(images):
         fig.add_subplot(1, number_images, i)
@@ -48,20 +51,19 @@ def prewitt_assignment(img):
     # Get filter:
     filter_x, filter_y = filters.prewitt()
 
-    len_x, len_y = np.shape(img)
-
     # Apply Filter
-    filtered_x = convolve_image(img, filter_x)
-    filtered_y = convolve_image(img, filter_y)
+    Gx = convolve_image(img, filter_x)
+    Gy = convolve_image(img, filter_y)
 
     # Create a grid to display gradient vectors
+    len_x, len_y = np.shape(img)
     x, y = np.mgrid[:len_x, :len_y]
 
     # Calculate the prewitt image
-    gradiented_img = np.sqrt(filtered_x*filtered_x + filtered_y*filtered_y)
+    G = np.sqrt(Gx*Gx + Gy*Gy)
 
     # Display the x filtered gradient
-    gradient = np.gradient(gradiented_img)
+    gradient = np.gradient(G)
 
     # Display the quiver on the image
     skip = (slice(None, None, 3), slice(None, None, 3))
@@ -70,35 +72,61 @@ def prewitt_assignment(img):
                color='r', minlength=.2)
 
     # Show result
-    plt.imshow(gradiented_img, cmap=plt.cm.gray)
+    plt.imshow(G, cmap=plt.cm.gray)
     plt.show()
 
 
 def laplace_assignment(img):
-    """"""
-    pass
+    """
+    Apply a laplacian filter on given img.
+    """
+
+    # Get filter
+    filter = filters.laplace()
+
+    # Apply filter
+    filtered_img = convolve_image(img, filter)
+
+    # Show results
+    show_images([img, filtered_img], title="Laplacian")
 
 
 def gauss_assignment(img):
     """
+    Apply a laplacian filter on given img.
     """
+    # Apply the gaussian filter.
     gauss_img = ndimage.gaussian_filter(img, 4)
+
+    # Invert the gauss filter
     inverted_gaus_img = img - gauss_img
-    show_images([inverted_gaus_img, img, gauss_img])
-    pass
+
+    # Show results
+    show_images([inverted_gaus_img, img, gauss_img], title="Gaussian")
 
 
 def sobel_assignment(img):
-    """"""
-    pass
+    """
+    Apply a laplacian filter on given img.
+    """
+    # Get filter:
+    filter_x, filter_y = filters.prewitt()
+
+    # Apply Filter
+    Sx = convolve_image(img, filter_x)
+    Sy = convolve_image(img, filter_y)
+
+    # Calculate the result image
+    S = np.sqrt(Sx*Sx + Sy*Sy)
+
+    # Show the results
+    show_images([Sx, Sy, S], title="sobel")
 
 
 if __name__ == "__main__":
-    # START HERE
-    # img = misc.lena()
-    img = ndimage.imread('img/lena.png', flatten=True)
+    img = misc.lena()
 
     prewitt_assignment(img)
     gauss_assignment(img)
-
-    # call other sub-assignments
+    laplace_assignment(img)
+    sobel_assignment(img)

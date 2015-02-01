@@ -1,6 +1,6 @@
 # REPLACE STUDENT NAMES WITH YOURS
 ASSIGMENT=ass2
-STUDENT_NAMES := student_name1_student_name2
+STUDENT_NAMES := maico_timmerman_robin_klusman
 DOCS := $(shell ls docs/report.pdf)
 DELIVERABLE := $(STUDENT_NAMES)_$(ASSIGMENT).tar.gz
 PYTHON_FILES := $(shell ls *.py)

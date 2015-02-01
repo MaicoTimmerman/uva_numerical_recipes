@@ -10,4 +10,18 @@ def prewitt():
 
     return Px, Py
 
-# Here is room for other filers.. why not add them?
+
+def laplace():
+    """ Returns the Laplacian filter """
+
+    return np.array([[0, 1, 0], [1, -4, 1], [0, 1, 0]])
+
+
+def sobel():
+    """returns x, and y Sobel filter"""
+    Sx = np.array([[1, 0, -1], [2, 0, -2], [1, 0, -1]])
+    Sy = np.array([[1, 2, 1], [0, 0, 0], [-1, -2, -1]])
+
+    return Sx, Sy
+
+
