@@ -112,7 +112,24 @@
 \section{Gradients}
 \subsection{Gradient Arrows}
 
+The gradient is defined as:
+$$\nabla f(x,y)=\!\!\left(\begin{array}{c} f_x(x,y) \\
+f_y(x,y)\end{array}\right)$$
+The gradient is an indication of the color change and can be used to indicate
+edges. For gradient determination, the Prewitt filter is used. In the following
+image the result of the prewitt filter, with vectors for the gradient are shown.
 
+Prewitt filtering is defined as following:
+
+$$ G_x = \left(\begin{array}{ccc} -1 & 0 & 1 \\ -1 & 0 & 1 \\ -1 & 0 & 1
+\end{array}\right)$$
+
+$$ G_y = \left(\begin{array}{ccc} -1 & -1 & -1 \\ 0 & 0 & 0 \\ 1 & 1 & 1
+\end{array}\right)$$
+
+The Prewitt total image can then be displayed as:
+
+$$ G = \sqrt{G_x^2 + G_y^2} $$
 
 \begin{center}
     \includegraphics[width=\textwidth]{gradient}
