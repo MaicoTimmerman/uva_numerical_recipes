@@ -42,28 +42,25 @@ if __name__ == "__main__":
     f2 = lambda t, y: y * (1 - (1 / 3.) * y)
 
     # Euler for 1-2ty, with y(0) = 1.5
-    # t0, y0 = euler(f1, 0, 1.5, 2, 2000)
-    # plt.plot(t0, y0, 'r-', linewidth=3)
-    # linefield.plot_random_field(f1, t=t0, y=y0)
-    # plt.show()
-    #
-    # # Euler for 1-2ty, with y(0) = .25
-    # t1, y1 = euler(f1, 0, .25, 2, 2000)
-    # plt.plot(t1, y1, 'm-', linewidth=3)
-    # linefield.plot_random_field(f1, t=t1, y=y1)
-    # plt.show()
-    #
-    # print('Euler for y-(1/3)*y*y)')
-    # t2, y2 = euler(f2, -1, .25, 1, 2000)
-    # plt.plot(t2, y2, 'r-', linewidth=3)
-    # linefield.plot_random_field(f2, t=t2, y=y2)
-    # plt.show()
+    t0, y0 = euler(f1, 0, 1.5, 2, 2000)
 
+    # Euler for 1-2ty, with y(0) = .25
+    t1, y1 = euler(f1, 0, .25, 2, 2000)
+
+    # Plot a random linefield, with the two functions
+    linefield.plot_random_field(f1, t=t0+t1, y=y0+y1)
+    plt.plot(t0, y0, 'r-', linewidth=3)
+    plt.plot(t1, y1, 'm-', linewidth=3)
+    plt.show()
+
+    # Euler for y-(1/3)*y*y)', with y(0) = .25
+    t2, y2 = euler(f2, -1, .25, 1, 2000)
+
+    # Euler for y-(1/3)*y*y)', with y(0) = 2.5
     t3, y3 = euler(f2, -1, 2.5, 1, 2000)
-    print('min: ' + str(min(t3)))
-    print('max: ' + str(max(t3)))
-    print('min: ' + str(min(y3)))
-    print('max: ' + str(max(y3)))
+
+    # Plot a random linefield, with the two functions
+    linefield.plot_random_field(f2, t=t2+t3, y=y2+y3)
+    plt.plot(t2, y2, 'r-', linewidth=3)
     plt.plot(t3, y3, 'm-', linewidth=3)
-    linefield.plot_random_field(f2, t=t3, y=y3)
     plt.show()

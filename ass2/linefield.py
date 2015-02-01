@@ -41,23 +41,16 @@ def plot_random_field(phi, fig=plt, t=None, y=None):
         x_min = 0
         x_max = 2
     else:
-        x_min = min(t)
-        x_max = max(t)
+        x_min = min(t) - .25
+        x_max = max(t) + .25
 
     # Determine the range (y values) of the function.
     if not t:
         y_min = 0
         y_max = 2
     else:
-        y_min = min(t)
-        y_max = max(t)
-
-    if t and y:
-        print("''''")
-        print('min: ' + str(min(t)))
-        print('max: ' + str(max(t)))
-        print('min: ' + str(min(y)))
-        print('max: ' + str(max(y)))
+        y_min = min(y) - .25
+        y_max = max(y) + .25
 
     for i in range(2000):
         x = (random.random() * (x_max - x_min)) + x_min
