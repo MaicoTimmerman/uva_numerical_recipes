@@ -120,6 +120,7 @@
 \subsection{Sobel operator}
 
 
+\clearpage
 \section{Slope Fields}
 \subsection{Slope and random fields}
 
@@ -138,13 +139,41 @@ desired line length and $s$ is the slope. Then $\Delta t$ is found by simply
 $\Delta t= \sqrt{c^2-\Delta y^2}$
 
 In case of the structured slope field we plotted a total of 100 slope lines on
-the interval $(0,2)$ in both the $t$ and $y$ directions.
+the interval $(0,2)$ in both the $t$ and $y$ directions as shown in the image
+below.
+\begin{center}
+    \includegraphics[width=\textwidth]{slopefield}
+\end{center}
 
 For the random slope field two random numbers are generated, one for the
 $t$-coordinate and one for the $y$-coordinate. This is repeated a total of 2000
-times to create the field.
+times to create the field as shown in the image below.
+\begin{center}
+    \includegraphics[width=\textwidth]{randomfield}
+\end{center}
 
 \subsection{Euler approximation}
+
+For the Euler approximation a program had to be written that approximates the
+graph of a function using the Euler method. This method does a certain amount of
+steps over a certain interval and each time calculates how much has to be added
+to the value of the previous step to get the value for this step.
+$y_{k+1}=y_k+h*\varphi (t_k,y_k)$ where $y_k$ is the function value of the
+previous step, $h$ is the step width and $t_k$ is the $t$ value of the  this
+step. After calculating the new $y$ value the new $t$ value is produced by
+$t_{k+1} = t_k + h$.
+
+When repeating this process 2000 times on the interval $(0,2)$ for $\varphi(t,
+y) = 1-2ty$ with begin values $y(0) = 1.5$ (in red) and $y(0) = 0.25$ (in
+purple) it creates the function approximation shown in the figure below.
+
+\begin{center}
+    \includegraphics[width=\textwidth]{euler1}
+\end{center}
+\captionof{figure}{Shows a random slope field with the corresponding Euler
+approximation of the graph. Using $y(0) = 1.5$ in red and $y(0) = 0.25$ in
+purple.}
+
 
 
 % =================================== REFERENCES ===================================
