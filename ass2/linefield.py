@@ -68,15 +68,14 @@ def get_line(t, y, length):
     x2 = a + dx
     y2 = b + dy
 
-    print('dx {}, dy {}'.format(dx, dy))
+    plt.plot([x1, x2], [y1, y2], 'b-', linewidth=1)
 
-    plt.plot([x1, y1], [x2, y2], 'k-')
     print('Plotted line at ({}, {}), ({}, {})'.format(x1, y1, x2, y2))
 
 
 if __name__ == "__main__":
-    get_line(1, 1, 1)
-    plt.plot([0.8, 0.8], [1.2, 1.2], 'k-')
-    plt.show()
-    #slope_field()
+    # get_line(1, 1, 1)
+    # plt.plot([1, 2], [1, 2], 'g-', label='line 1', linewidth=2)
+    # plt.show()
+    slope_field()
     #random_field()
